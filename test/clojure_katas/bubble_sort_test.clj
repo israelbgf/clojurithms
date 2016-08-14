@@ -1,28 +1,7 @@
-(ns clojure-katas.core-test
+(ns clojure-katas.bubble-sort-test
   (:require [clojure.test :refer :all]
-            [clojure-katas.core :refer :all]))
+            [clojure-katas.bubble-sort :refer :all]))
 
-(defn- to-tail-if-greater
-  [coll val]
-    (cond
-      (empty? coll) (list val)
-      (> (last coll) val)
-        (concat (butlast coll) [val] [(last coll)])
-      :else
-        (concat coll [val])))
-
-(defn- bubble-up [coll]
-  (reduce to-tail-if-greater [] coll))
-
-(defn bubble-sort
-  [unsorted-coll]
-  (loop [sorted ()
-         unsorted unsorted-coll]
-    (if (empty? unsorted)
-      sorted
-      (let [greatest-at-end (bubble-up unsorted)]
-        (recur (conj sorted (last greatest-at-end))
-               (butlast greatest-at-end))))))
 
 (deftest how-to-tail-if-greater
   (testing "Returns a coll with val added to tail if greatest than current one, otherwise added to before last."
