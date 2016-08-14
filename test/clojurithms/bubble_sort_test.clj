@@ -1,6 +1,6 @@
-(ns clojure-katas.bubble-sort-test
+(ns clojurithms.bubble-sort-test
   (:require [clojure.test :refer :all]
-            [clojure-katas.bubble-sort :refer :all]))
+            [clojurithms.bubble-sort :refer :all]))
 
 (deftest empty-when-empty
   (is (= [] (bubble-sort []))))

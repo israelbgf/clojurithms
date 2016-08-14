@@ -1,4 +1,4 @@
-(ns clojure-katas.bubble-sort
+(ns clojurithms.bubble-sort
   (:gen-class))
 
 (defn to-tail-if-greater
