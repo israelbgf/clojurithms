@@ -2,22 +2,6 @@
   (:require [clojure.test :refer :all]
             [clojure-katas.bubble-sort :refer :all]))
 
-
-(deftest how-to-tail-if-greater
-  (testing "Returns a coll with val added to tail if greatest than current one, otherwise added to before last."
-    (is (= [1] (to-tail-if-greater [] 1)))
-    (is (= [0 1 2] (to-tail-if-greater [0 2] 1)))
-    (is (= [0 2 7] (to-tail-if-greater [0 2] 7)))))
-
-(deftest how-bubble-up
-  (testing "Returns a coll with the greatest value at last."
-    (is (= [] (bubble-up [])))
-    (is (= [1] (bubble-up [1])))
-    (is (= [1 2] (bubble-up [1 2])))
-    (is (= [1 2] (bubble-up [2 1])))
-    (is (= [0 1 2] (bubble-up [2 0 1])))
-    (is (= [1 2 0 3] (bubble-up [3 1 2 0])))))
-
 (deftest empty-when-empty
   (is (= [] (bubble-sort []))))
 
@@ -32,7 +16,6 @@
 
 (deftest ordered-when-three-or-more-items
   (is (= [1 2 3] (bubble-sort [2 3 1])))
-  (is (= [1 2 3] (bubble-sort [3 2 1])))
   (is (= [1 2 3 4] (bubble-sort [3 4 2 1])))
   (is (= [1 2 3 4] (bubble-sort [1 3 4 2]))))
 

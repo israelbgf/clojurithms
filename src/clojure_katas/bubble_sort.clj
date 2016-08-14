@@ -5,11 +5,11 @@
   [coll val]
   (cond
     (empty? coll)
-      (list val)
-    (> (last coll) val)
-      (concat (butlast coll) [val] [(last coll)])
+      [val]
+    (> (peek coll) val)
+      (into (pop coll) [val (peek coll)])
     :else
-      (concat coll [val])))
+      (conj coll val)))
 
 (defn bubble-up [coll]
   (reduce to-tail-if-greater [] coll))
@@ -20,6 +20,6 @@
          unsorted unsorted-coll]
     (if (empty? unsorted)
       sorted
-      (let [greatest-at-end (bubble-up unsorted)]
-        (recur (conj sorted (last greatest-at-end))
-               (butlast greatest-at-end))))))
+      (let [coll-with-greatest-at-end (bubble-up unsorted)]
+        (recur (conj sorted (peek coll-with-greatest-at-end))
+               (pop coll-with-greatest-at-end))))))
