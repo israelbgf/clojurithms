@@ -3,23 +3,22 @@
 
 (defn to-tail-if-greater
   [coll val]
-  (cond
-    (empty? coll)
-      [val]
-    (> (peek coll) val)
+  (if (empty? coll)
+    [val]
+    (if (> (peek coll) val)
       (into (pop coll) [val (peek coll)])
-    :else
-      (conj coll val)))
+      (conj coll val))))
 
-(defn bubble-up [coll]
+(defn bubble-up
+  [coll]
   (reduce to-tail-if-greater [] coll))
 
 (defn bubble-sort
-  [unsorted-coll]
+  [coll]
   (loop [sorted ()
-         unsorted unsorted-coll]
+         unsorted coll]
     (if (empty? unsorted)
       sorted
-      (let [coll-with-greatest-at-end (bubble-up unsorted)]
-        (recur (conj sorted (peek coll-with-greatest-at-end))
-               (pop coll-with-greatest-at-end))))))
+      (let [greatest-at-tail (bubble-up unsorted)]
+        (recur (conj sorted (peek greatest-at-tail))
+               (pop greatest-at-tail))))))
