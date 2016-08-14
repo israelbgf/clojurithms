@@ -1,5 +1,4 @@
-(ns clojurithms.bubble-sort
-  (:gen-class))
+(ns clojurithms.bubble-sort)
 
 (defn to-tail-if-greater
   [coll val]
