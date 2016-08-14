@@ -17,6 +17,7 @@
 (deftest ordered-when-three-or-more-items
   (is (= [1 2 3] (bubble-sort [2 3 1])))
   (is (= [1 2 3 4] (bubble-sort [3 4 2 1])))
-  (is (= [1 2 3 4] (bubble-sort [1 3 4 2]))))
+  (is (= [1 2 3 4] (bubble-sort [1 3 4 2])))
+  (is (= [1 2 3 4] (bubble-sort [4 3 2 1]))))
 
 
